@@ -15,8 +15,8 @@ public class sc_fbholder : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		if ( FB.IsInitialized == false )
-			FB.Init (SetInit, OnHideUnity);
+//		if ( FB.IsInitialized == false )
+//			FB.Init (SetInit, OnHideUnity);
 	}
 
 	void Start() {
@@ -30,12 +30,12 @@ public class sc_fbholder : MonoBehaviour {
 	
 	private void SetInit() {
 		Debug.Log("FB Init Done");
-		if (FB.IsLoggedIn) {
-			Debug.Log ("FB Logged in");
-			//FBLogin();
-		} else {
-
-		}
+//		if (FB.IsLoggedIn) {
+//			Debug.Log ("FB Logged in");
+//			//FBLogin();
+//		} else {
+//
+//		}
 	}
 
 	private void OnHideUnity(bool isGameShown) {
@@ -51,7 +51,7 @@ public class sc_fbholder : MonoBehaviour {
 		Debug.Log("FB button Clicked " + statFB);
 
 		if (statFB == 0) {
-			FB.Login ("user_about_me, user_birthday", AuthCallBack);
+//			FB.Login ("user_about_me, user_birthday", AuthCallBack);
 		} else {
 			Debug.Log("Facebook Logout Clicked");
 			ubahNamaUser("Guest");
@@ -60,72 +60,72 @@ public class sc_fbholder : MonoBehaviour {
 
 			UIFBUsername.text = "Guest";
 
-			FB.Logout();
+//			FB.Logout();
 		}
 	}
 
-	void AuthCallBack(FBResult result)
-	{
-		Debug.Log ("FB Login Result : " + result.Text + " | Error : " + result.Error);
-		//Text txtResultfb = GameObject.Find ("txtData").GetComponent<Text> ();
-		//txtResultfb.text = "Error : " + result.Error + " | Result : " + result.Text;
-
-		if (FB.IsLoggedIn) {
-			Debug.Log ("FB Login Worked");
-			Debug.Log("========>>> accessToken : " + FB.AccessToken);
-
-			FB.API(Util.GetPictureURL("me",128,128),Facebook.HttpMethod.GET, pasangFotoProfile);
-			FB.API ("/me?fields=id,first_name,last_name", Facebook.HttpMethod.GET, pasangNamaProfile);
-		} else {
-			Debug.Log ("FB Login Failed"); 
-		}
-	}
-
-	public void GetFotoAndName()
-	{
-		if (FB.IsInitialized == false)
-			return;
-		if (FB.IsLoggedIn == false)
-			return;
-		FB.API(Util.GetPictureURL("me",128,128),Facebook.HttpMethod.GET, pasangFotoProfile);
-		FB.API ("/me?fields=id,first_name,last_name", Facebook.HttpMethod.GET, pasangNamaProfile);
-	}
-
-	void pasangFotoProfile(FBResult hasil) {
-		Debug.Log ("Fb Resut : "+ hasil.Text);
-		if (hasil.Error != null) {
-			Debug.Log("ada masalah saat load picture profile");
-			FB.API(Util.GetPictureURL("me",128,128),Facebook.HttpMethod.GET, pasangFotoProfile);
-			return;
-		}
-
-		if (UIFBAvatar) {
-			UIFBAvatar.mainTexture = hasil.Texture;
-		}
-	}
-
-	void pasangNamaProfile(FBResult hasil) {
-		if (hasil.Error != null) {
-			Debug.Log("ada masalah saat load picture profile");
-			FB.API ("/me?fields=id,first_name", Facebook.HttpMethod.GET, pasangNamaProfile);
-			return;
-		}
-		Debug.Log ("Fb Resut >:> "+ hasil.Text);
-
-		profile = Util.DeserializeJSONProfile (hasil.Text);
-
-		SimpleJSON.JSONNode rsl = SimpleJSON.JSON.Parse(hasil.Text);
-		Debug.Log ("Facebook ID : " + rsl[0].Value);
-		PlayerPrefs.SetString (PlayerPrefHandler.keyUserName, rsl[0].Value);
-
-		fb_fullname = profile ["first_name"] + " " + rsl [2].Value;
-		Debug.Log ("1.Namaaaaaaaaaaaa userrrrrrr :::" + fb_fullname);
-		//GameObject.Find ("cont_signup").SendMessage ("registerByFacebook_proses",rsl[0].Value);
-		ubahNamaUser(profile["first_name"]);
-		ubahProfileUser("facebook");
-
-		PlayerPrefs.Save();
-	}
+//	void AuthCallBack(FBResult result)
+//	{
+//		Debug.Log ("FB Login Result : " + result.Text + " | Error : " + result.Error);
+//		//Text txtResultfb = GameObject.Find ("txtData").GetComponent<Text> ();
+//		//txtResultfb.text = "Error : " + result.Error + " | Result : " + result.Text;
+//
+//		if (FB.IsLoggedIn) {
+//			Debug.Log ("FB Login Worked");
+//			Debug.Log("========>>> accessToken : " + FB.AccessToken);
+//
+//			FB.API(Util.GetPictureURL("me",128,128),Facebook.HttpMethod.GET, pasangFotoProfile);
+//			FB.API ("/me?fields=id,first_name,last_name", Facebook.HttpMethod.GET, pasangNamaProfile);
+//		} else {
+//			Debug.Log ("FB Login Failed"); 
+//		}
+//	}
+//
+//	public void GetFotoAndName()
+//	{
+//		if (FB.IsInitialized == false)
+//			return;
+//		if (FB.IsLoggedIn == false)
+//			return;
+//		FB.API(Util.GetPictureURL("me",128,128),Facebook.HttpMethod.GET, pasangFotoProfile);
+//		FB.API ("/me?fields=id,first_name,last_name", Facebook.HttpMethod.GET, pasangNamaProfile);
+//	}
+//
+//	void pasangFotoProfile(FBResult hasil) {
+//		Debug.Log ("Fb Resut : "+ hasil.Text);
+//		if (hasil.Error != null) {
+//			Debug.Log("ada masalah saat load picture profile");
+//			FB.API(Util.GetPictureURL("me",128,128),Facebook.HttpMethod.GET, pasangFotoProfile);
+//			return;
+//		}
+//
+//		if (UIFBAvatar) {
+//			UIFBAvatar.mainTexture = hasil.Texture;
+//		}
+//	}
+//
+//	void pasangNamaProfile(FBResult hasil) {
+//		if (hasil.Error != null) {
+//			Debug.Log("ada masalah saat load picture profile");
+//			FB.API ("/me?fields=id,first_name", Facebook.HttpMethod.GET, pasangNamaProfile);
+//			return;
+//		}
+//		Debug.Log ("Fb Resut >:> "+ hasil.Text);
+//
+//		profile = Util.DeserializeJSONProfile (hasil.Text);
+//
+//		SimpleJSON.JSONNode rsl = SimpleJSON.JSON.Parse(hasil.Text);
+//		Debug.Log ("Facebook ID : " + rsl[0].Value);
+//		PlayerPrefs.SetString (PlayerPrefHandler.keyUserName, rsl[0].Value);
+//
+//		fb_fullname = profile ["first_name"] + " " + rsl [2].Value;
+//		Debug.Log ("1.Namaaaaaaaaaaaa userrrrrrr :::" + fb_fullname);
+//		//GameObject.Find ("cont_signup").SendMessage ("registerByFacebook_proses",rsl[0].Value);
+//		ubahNamaUser(profile["first_name"]);
+//		ubahProfileUser("facebook");
+//
+//		PlayerPrefs.Save();
+//	}
 
 
 	public void ubahNamaUser(string namaUser) {
@@ -147,9 +147,9 @@ public class sc_fbholder : MonoBehaviour {
 	}
 
 	public void reLogin_fb() {
-		if(FB.IsInitialized ) {
-			FB.Login ("user_about_me, user_birthday", AuthCallBack);
-		}
+//		if(FB.IsInitialized ) {
+//			FB.Login ("user_about_me, user_birthday", AuthCallBack);
+//		}
 	}
 
 }

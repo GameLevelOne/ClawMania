@@ -59,8 +59,8 @@ public class GUI_Gl1_SignUp : GUI_Dialog {
 		{
 			
 			string sFBID = "";
-			if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
-				sFBID = SPFacebook.instance.UserId;
+//			if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
+//				sFBID = SPFacebook.instance.UserId;
 			GL1Connector.GetInstance().Register(this.gameObject,labelName.value,
 			                      labelEmail.value,
 			                      "787665566",

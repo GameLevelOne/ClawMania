@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SimpleJSON;
-using GooglePlayGames;
+//using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public class GUI_Share : GUI_Dialog 
@@ -44,11 +44,11 @@ public class GUI_Share : GUI_Dialog
 
 	public override void OnStart () 
 	{
-		SPFacebook.instance.addEventListener(FacebookEvents.AUTHENTICATION_SUCCEEDED,  	 OnFBLoggedIn);
-		//SPTwitter.instance.addEventListener(TwitterEvents.AUTHENTICATION_SUCCEEDED,  OnTwitterLoggedIn);
-		
-		if ( FB.IsInitialized == false )
-			SPFacebook.instance.Init();
+//		SPFacebook.instance.addEventListener(FacebookEvents.AUTHENTICATION_SUCCEEDED,  	 OnFBLoggedIn);
+//		//SPTwitter.instance.addEventListener(TwitterEvents.AUTHENTICATION_SUCCEEDED,  OnTwitterLoggedIn);
+//		
+//		if ( FB.IsInitialized == false )
+//			SPFacebook.instance.Init();
 		//SPTwitter.instance.Init(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
 	}
 	
@@ -91,34 +91,34 @@ public class GUI_Share : GUI_Dialog
 		//textureFacebookUser.StartDownloadImage("https" + "://graph.facebook.com/" + FB.UserId + "/picture?type=large");
 	}
 	
-	private void OnUserDataLoaded(FBResult result) 
-	{
-		SPFacebook.instance.OnUserDataRequestCompleteAction -= OnUserDataLoaded;
-
-		if (result.Error == null)  
-		{ 
-			labelUsername.text = SPFacebook.instance.userInfo.first_name;
-			/*
-			SA_StatusBar.text = "User data loaded";
-			IsUserInfoLoaded = true;
-			
-			//user data available, we can get info using
-			//SPFacebook.instance.userInfo getter
-			//and we can also use userInfo methods, for exmple download user avatar image
-			SPFacebook.instance.userInfo.LoadProfileImage(FacebookProfileImageSize.square);
-			*/
-			
-		} 
-		else 
-		{
-			/*
-			SA_StatusBar.text ="Opps, user data load failed, something was wrong";
-			Debug.Log("Opps, user data load failed, something was wrong");
-			*/
-		}
-
-	}
-
+//	private void OnUserDataLoaded(FBResult result) 
+//	{
+//		SPFacebook.instance.OnUserDataRequestCompleteAction -= OnUserDataLoaded;
+//
+//		if (result.Error == null)  
+//		{ 
+//			labelUsername.text = SPFacebook.instance.userInfo.first_name;
+//			/*
+//			SA_StatusBar.text = "User data loaded";
+//			IsUserInfoLoaded = true;
+//			
+//			//user data available, we can get info using
+//			//SPFacebook.instance.userInfo getter
+//			//and we can also use userInfo methods, for exmple download user avatar image
+//			SPFacebook.instance.userInfo.LoadProfileImage(FacebookProfileImageSize.square);
+//			*/
+//			
+//		} 
+//		else 
+//		{
+//			/*
+//			SA_StatusBar.text ="Opps, user data load failed, something was wrong";
+//			Debug.Log("Opps, user data load failed, something was wrong");
+//			*/
+//		}
+//
+//	}
+//
 	public void OnClickGemuReward()
 	{
 		StartCoroutine (WaitingToShowReward ());
@@ -160,23 +160,23 @@ public class GUI_Share : GUI_Dialog
 		FBInvite ();
 	}
 
-	void OnAppRequestCompleteAction (FBAppRequestResult result) {
-		
-		if(result.IsSucceeded) {
-			foreach(string UserId in result.Recipients) {
-				Debug.Log(UserId);
-			}
-			
-			Debug.Log("Original Facebook Responce: " + result.Result.Text);
-		} else {
-			Debug.Log("App request has failed");
-		}
-		
-		
-		SPFacebook.instance.OnAppRequestCompleteAction -= OnAppRequestCompleteAction;
-		
-		
-	}
+//	void OnAppRequestCompleteAction (FBAppRequestResult result) {
+//		
+//		if(result.IsSucceeded) {
+//			foreach(string UserId in result.Recipients) {
+//				Debug.Log(UserId);
+//			}
+//			
+//			Debug.Log("Original Facebook Responce: " + result.Result.Text);
+//		} else {
+//			Debug.Log("App request has failed");
+//		}
+//		
+//		
+//		SPFacebook.instance.OnAppRequestCompleteAction -= OnAppRequestCompleteAction;
+//		
+//		
+//	}
 
 	public void OnTwitterLoggedIn()
 	{
@@ -205,24 +205,20 @@ public class GUI_Share : GUI_Dialog
 		{
 			gs.RefreshAllInfo();
 		}
-		if (FB.IsLoggedIn) {
-			print ("asd");
-			GameObject.Find ("GUI_Share").GetComponent<GUI_Share> ().OnFBLoggedIn ();
-		}
+//		if (FB.IsLoggedIn) {
+//			print ("asd");
+//			GameObject.Find ("GUI_Share").GetComponent<GUI_Share> ().OnFBLoggedIn ();
+//		}
 	}
 
 	public void OnClickFB()
 	{
 		if (string.IsNullOrEmpty (PlayerPrefs.GetString (PlayerPrefHandler.keyToken)) || string.IsNullOrEmpty (PlayerPrefs.GetString (PlayerPrefHandler.keyUserName))) {
-			if (!FB.IsLoggedIn) {
-				//SPFacebook.instance.Login ("email,publish_actions");
-				FB.Login("email,publish_actions",LoginCallback);
-				//FacebookWrapper.GetInstance().LoginFB();
-			} else {
+
 				Gamestate gs = GameObject.FindGameObjectWithTag ("Gamestate").GetComponent<Gamestate> ();
 				if (gs) {
 					gs.ShowDialogBox ("Confirmation", "Are you sure you want to logout from Facebook ?", true, "logoutfb", this.gameObject);
-				}
+
 			}
 		} else {
 			GUI_Dialog.InsertStack(guiGL1_UserData.gameObject);
@@ -237,34 +233,34 @@ public class GUI_Share : GUI_Dialog
 			callback:ShareCallback
 		);*/
 		
-		FB.Feed ("", "https://www.gemugemu.com/", "Play for free and be rewarded. It's magic.", "from ClawMania", "Check out this game!", "", "", "", "", "", null, ShareCallback);
+//		FB.Feed ("", "https://www.gemugemu.com/", "Play for free and be rewarded. It's magic.", "from ClawMania", "Check out this game!", "", "", "", "", "", null, ShareCallback);
 		//ShareToFacebook ("http://www.gemugemu.com/","I'm playing TerraWorms!","New High Score!","lorem ipsum","",
 		//"http://www.facebook.com/");
 		
 	}
 	
-	private void ShareCallback(FBResult result){
-		if (result.Error != null) {
-			//logTxt.text="Error response: " + result.Error;
-			
-		} 
-		if (result == null || result.Error != null) {
-			//cancelled
-		}
-		else {
-			//logTxt.text="share success";
-			//GL1Connector.GetInstance().AddBalance(this.gameObject,"5","0","","SHARE");
-			//GL1Connector.GetInstance().AddGameBalance(this.gameObject,"5","","SHARE");
-			Gamestate_Gameplay gs = GameObject.Find ("Gamestate").GetComponent<Gamestate_Gameplay> ();
-			if (gs == null)
-				return;
-
-			Social.ReportProgress(GPGSIds.achievement_share_our_game, 100.0f, (bool success) => {
-				// handle success or failure
-				//gs.achievementManager.AddToFinalAchievementEvent();
-			});
-		}
-	}
+//	private void ShareCallback(FBResult result){
+//		if (result.Error != null) {
+//			//logTxt.text="Error response: " + result.Error;
+//			
+//		} 
+//		if (result == null || result.Error != null) {
+//			//cancelled
+//		}
+//		else {
+//			//logTxt.text="share success";
+//			//GL1Connector.GetInstance().AddBalance(this.gameObject,"5","0","","SHARE");
+//			//GL1Connector.GetInstance().AddGameBalance(this.gameObject,"5","","SHARE");
+//			Gamestate_Gameplay gs = GameObject.Find ("Gamestate").GetComponent<Gamestate_Gameplay> ();
+//			if (gs == null)
+//				return;
+//
+//			Social.ReportProgress(GPGSIds.achievement_share_our_game, 100.0f, (bool success) => {
+//				// handle success or failure
+//				//gs.achievementManager.AddToFinalAchievementEvent();
+//			});
+//		}
+//	}
 	
 	public void FBInvite(){
 		/*FB.AppRequest (
@@ -273,48 +269,48 @@ public class GUI_Share : GUI_Dialog
 			callback:InviteCallback
 		);*/
 		
-		FB.AppRequest ("Join me", null, null, null, null, "", "Invite your friends to join!", InviteCallback);
+//		FB.AppRequest ("Join me", null, null, null, null, "", "Invite your friends to join!", InviteCallback);
 	}
 	
-	private void InviteCallback(FBResult result){
-		if (result.Error != null) {
-			//logTxt.text="Error response: " + result.Error;
-			
-		} 
-		if (result == null || result.Error != null) {
-			//cancelled
-		}
-		else {
-			//logTxt.text="invite success";
-			//GL1Connector.GetInstance().AddBalance(this.gameObject,"5","0","","INVITE");
-			//GL1Connector.GetInstance().AddGameBalance(this.gameObject,"5","","INVITE");
-		}
-		//Debug.Log("asd");
-	}
+//	private void InviteCallback(FBResult result){
+//		if (result.Error != null) {
+//			//logTxt.text="Error response: " + result.Error;
+//			
+//		} 
+//		if (result == null || result.Error != null) {
+//			//cancelled
+//		}
+//		else {
+//			//logTxt.text="invite success";
+//			//GL1Connector.GetInstance().AddBalance(this.gameObject,"5","0","","INVITE");
+//			//GL1Connector.GetInstance().AddGameBalance(this.gameObject,"5","","INVITE");
+//		}
+//		//Debug.Log("asd");
+//	}
 
-	private void LoginCallback(FBResult result){
-		if (FB.IsLoggedIn) {
-			Debug.Log ("FB Login worked");
-			FB.API("/me?fields=email", Facebook.HttpMethod.GET, LoginCallback2);
-		}
-		else{
-			Debug.Log ("FB Login failed");
-		}
-	}
-
-	private void LoginCallback2(FBResult result){
-		if (result.Error != null) {
-			Debug.Log ("Error response: " + result.Error);
-		} else if (!FB.IsLoggedIn) {
-			Debug.Log ("Login cancelled");
-		} else {
-			IDictionary dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as IDictionary;
-			//Debug.Log (dict["email"]);
-			string userEmail=dict["email"].ToString();
-			//GL1Connector.GetInstance().LoginViaFB(userEmail);
-		}
-	}
-
+//	private void LoginCallback(FBResult result){
+//		if (FB.IsLoggedIn) {
+//			Debug.Log ("FB Login worked");
+//			FB.API("/me?fields=email", Facebook.HttpMethod.GET, LoginCallback2);
+//		}
+//		else{
+//			Debug.Log ("FB Login failed");
+//		}
+//	}
+//
+//	private void LoginCallback2(FBResult result){
+//		if (result.Error != null) {
+//			Debug.Log ("Error response: " + result.Error);
+//		} else if (!FB.IsLoggedIn) {
+//			Debug.Log ("Login cancelled");
+//		} else {
+//			IDictionary dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as IDictionary;
+//			//Debug.Log (dict["email"]);
+//			string userEmail=dict["email"].ToString();
+//			//GL1Connector.GetInstance().LoginViaFB(userEmail);
+//		}
+//	}
+//
 	public void OnClickTwitter()
 	{
 		/*
@@ -361,7 +357,7 @@ public class GUI_Share : GUI_Dialog
 		buttonFacebook.gameObject.SetActive (true);
 		buttonFBShare.gameObject.SetActive(false);
 		buttonFBInvite.gameObject.SetActive (false);
-		SPFacebook.instance.Logout ();
+//		SPFacebook.instance.Logout ();
 		textureFacebookUser.GetComponent<UITexture> ().mainTexture = textureNoUser;
 	}
 
@@ -408,10 +404,10 @@ public class GUI_Share : GUI_Dialog
 		buttonEmail.gameObject.SetActive (false);
 		buttonEmail.gameObject.SetActive (true);
 
-		if ( FB.IsLoggedIn )
-		{
-			OnFBLoggedIn();
-		}
+//		if ( FB.IsLoggedIn )
+//		{
+//			OnFBLoggedIn();
+//		}
 
 		/*
 		if ( SPTwitter.instance.IsAuthed )

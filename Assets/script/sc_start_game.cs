@@ -212,27 +212,27 @@ public class sc_start_game : MonoBehaviour {
 		string title = "Hello";
 		string message = "Play with me";
 		
-		SPFacebook.instance.SendInvite(title, message);
-		SPFacebook.instance.OnAppRequestCompleteAction += OnAppRequestCompleteAction;
+//		SPFacebook.instance.SendInvite(title, message);
+//		SPFacebook.instance.OnAppRequestCompleteAction += OnAppRequestCompleteAction;
 	}
 
-	void OnAppRequestCompleteAction (FBAppRequestResult result) {
-		
-		if(result.IsSucceeded) {
-			foreach(string UserId in result.Recipients) {
-				Debug.Log(UserId);
-			}
-			
-			Debug.Log("Original Facebook Responce: " + result.Result.Text);
-		} else {
-			Debug.Log("App request has failed");
-		}
-		
-		
-		SPFacebook.instance.OnAppRequestCompleteAction -= OnAppRequestCompleteAction;
-		
-		
-	}
+//	void OnAppRequestCompleteAction (FBAppRequestResult result) {
+//		
+//		if(result.IsSucceeded) {
+//			foreach(string UserId in result.Recipients) {
+//				Debug.Log(UserId);
+//			}
+//			
+//			Debug.Log("Original Facebook Responce: " + result.Result.Text);
+//		} else {
+//			Debug.Log("App request has failed");
+//		}
+//		
+//		
+//		SPFacebook.instance.OnAppRequestCompleteAction -= OnAppRequestCompleteAction;
+//		
+//		
+//	}
 	public void btnYesQuit_clicked() {
 		bunyi_click ();
 

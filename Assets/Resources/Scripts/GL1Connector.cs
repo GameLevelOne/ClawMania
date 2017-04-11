@@ -327,7 +327,7 @@ public class GL1Connector : MonoBehaviour
 	public void LoginViaFB(string email){
 		
 		//change this values according to user input
-		string fbId = FB.UserId;
+//		string fbId = FB.UserId;
 		string userEmail = email;
 		
 		//string tempGameid = gameID;
@@ -335,7 +335,7 @@ public class GL1Connector : MonoBehaviour
 		
 		string postURL = "https://www.gemugemu.com/api/loginfb.php";
 		
-		string jsonString = "{\"fb_id\":\"" + fbId + "\"," +
+		string jsonString = "{\"fb_id\":\"" + "\"," +
 			"\"fb_email\":\"" + userEmail + "\"," +
 				"\"gameid\":\""   + GAME_ID   + "\"," +
 				"\"ip\":\""       + tempIp       + "\"," +
@@ -404,10 +404,10 @@ public class GL1Connector : MonoBehaviour
 						PlayerPrefs.SetString (PlayerPrefHandler.keyUserName, sCurrUser);
 						PlayerPrefs.SetString (PlayerPrefHandler.keyToken, sToken);
 
-						if(FB.IsLoggedIn){
-							GameObject.Find ("GUI_Share").GetComponent<GUI_Share>().OnFBLoggedIn();
-							GameObject.Find ("GUI_Share").GetComponent<GUI_Share>().OnGemuGemuLoggedIn();
-						}
+//						if(FB.IsLoggedIn){
+//							GameObject.Find ("GUI_Share").GetComponent<GUI_Share>().OnFBLoggedIn();
+//							GameObject.Find ("GUI_Share").GetComponent<GUI_Share>().OnGemuGemuLoggedIn();
+//						}
 					}
 				}
 				else

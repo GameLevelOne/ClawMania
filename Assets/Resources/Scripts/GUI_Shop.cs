@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SocialPlatforms;
-using GooglePlayGames;
+//using GooglePlayGames;
 using UnityEngine.Advertisements;
 using System;
 
@@ -212,12 +212,12 @@ public class GUI_Shop : GUI_Dialog
 //				trButtonBuy.gameObject.SetActive(false);
 //
 //		}
-		AndroidInAppPurchaseManager.ActionProductPurchased += OnProductPurchased;  
-		AndroidInAppPurchaseManager.ActionProductConsumed  += OnProductConsumed;
+//		AndroidInAppPurchaseManager.ActionProductPurchased += OnProductPurchased;  
+//		AndroidInAppPurchaseManager.ActionProductConsumed  += OnProductConsumed;
 
 		//listening for store initilaizing finish
-		AndroidInAppPurchaseManager.ActionBillingSetupFinished += OnBillingConnected;
-		AndroidInAppPurchaseManager.instance.loadStore();
+//		AndroidInAppPurchaseManager.ActionBillingSetupFinished += OnBillingConnected;
+//		AndroidInAppPurchaseManager.instance.loadStore();
 
 		RefreshInfo ();
 
@@ -569,7 +569,7 @@ public class GUI_Shop : GUI_Dialog
 
 	public void BuyCoins()
 	{
-		AndroidInAppPurchaseManager.instance.purchase (currentShopContent.uniqueID);
+//		AndroidInAppPurchaseManager.instance.purchase (currentShopContent.uniqueID);
 	}
 
 	public void BuyClaw()
@@ -783,7 +783,7 @@ public class GUI_Shop : GUI_Dialog
 			else
 			{
 				currentShopContent = content;
-				AndroidInAppPurchaseManager.instance.purchase (currentShopContent.uniqueID);
+//				AndroidInAppPurchaseManager.instance.purchase (currentShopContent.uniqueID);
 				//OnSuccessfulPurchase(currentShopContent.uniqueID);
 			}
 		}
@@ -872,79 +872,79 @@ public class GUI_Shop : GUI_Dialog
 		PlayerPrefs.Save ();
 	}
 	
-	private static void OnProductPurchased(BillingResult result) 
-	{
-		if(result.isSuccess) 
-		{
-			AndroidInAppPurchaseManager.instance.consume (result.purchase.SKU);
-
-		} 
-		else 
-		{
-			// product has been purchased, but not consumed yet
-			if ( result.response == 7 )
-			{
-				AndroidInAppPurchaseManager.instance.consume (result.purchase.SKU);
-
-			}
-		}
-		
-		Debug.Log ("Purchased Responce: " + result.response.ToString() + " " + result.message);
-	}
-	
-	private static void OnProductConsumed(BillingResult result)
-	{
-		if(result.isSuccess) 
-		{
-			GUI_Shop.GetInstance().OnSuccessfulPurchase(result.purchase.SKU);
-
-		} 
-		else 
-		{
-		}
-		Debug.LogError ("OnProductConsumed "+result.response.ToString());
-	}
-
-
-
-	private static void OnBillingConnected(BillingResult result) {
-		AndroidInAppPurchaseManager.ActionBillingSetupFinished -= OnBillingConnected;
-		
-		
-		if(result.isSuccess) {
-			AndroidInAppPurchaseManager.instance.retrieveProducDetails();
-			AndroidInAppPurchaseManager.ActionRetrieveProducsFinished += OnRetrieveProductsFinised;
-		} 
-
-		Debug.Log ("Connection Responce: " + result.response.ToString() + " " + result.message);
-	}
-
-	private static void OnRetrieveProductsFinised(BillingResult result) {
-		AndroidInAppPurchaseManager.ActionRetrieveProducsFinished -= OnRetrieveProductsFinised;
-		
-		
-		if(result.isSuccess) {
-
-			foreach(GoogleProductTemplate tpl in AndroidInAppPurchaseManager.instance.inventory.products) 
-			{
-				for ( int i=0; i<GUI_Shop.GetInstance().containerShopCoins.transform.childCount ; i++ )
-				{
-					ShopContent content = GUI_Shop.GetInstance().containerShopCoins.transform.GetChild(i).gameObject.GetComponent<ShopContent>();
-					if ( tpl.SKU.Equals(content.uniqueID) )
-					{
-						GameManager.SetNGUILabel(content.transform.Find("Label Price"),tpl.price);
-						Transform trButtonBuy = content.transform.Find("ButtonBuy");
-						if ( trButtonBuy )
-							trButtonBuy.gameObject.SetActive(true);
-						break;
-					}
-				}
-			}
-		} else {
-			//AndroidMessage.Create("Connection Responce", result.response.ToString() + " " + result.message);
-		}
-		
-		Debug.Log ("Connection Response: " + result.response.ToString() + " " + result.message);
-		
-	}
+//	private static void OnProductPurchased(BillingResult result) 
+//	{
+//		if(result.isSuccess) 
+//		{
+////			AndroidInAppPurchaseManager.instance.consume (result.purchase.SKU);
+//
+//		} 
+//		else 
+//		{
+//			// product has been purchased, but not consumed yet
+//			if ( result.response == 7 )
+//			{
+////				AndroidInAppPurchaseManager.instance.consume (result.purchase.SKU);
+//
+//			}
+//		}
+//		
+//		Debug.Log ("Purchased Responce: " + result.response.ToString() + " " + result.message);
+//	}
+//	
+//	private static void OnProductConsumed(BillingResult result)
+//	{
+//		if(result.isSuccess) 
+//		{
+//			GUI_Shop.GetInstance().OnSuccessfulPurchase(result.purchase.SKU);
+//
+//		} 
+//		else 
+//		{
+//		}
+//		Debug.LogError ("OnProductConsumed "+result.response.ToString());
+//	}
+//
+//
+//
+//	private static void OnBillingConnected(BillingResult result) {
+//		AndroidInAppPurchaseManager.ActionBillingSetupFinished -= OnBillingConnected;
+//		
+//		
+//		if(result.isSuccess) {
+////			AndroidInAppPurchaseManager.instance.retrieveProducDetails();
+//			AndroidInAppPurchaseManager.ActionRetrieveProducsFinished += OnRetrieveProductsFinised;
+//		} 
+//
+//		Debug.Log ("Connection Responce: " + result.response.ToString() + " " + result.message);
+//	}
+//
+//	private static void OnRetrieveProductsFinised(BillingResult result) {
+//		AndroidInAppPurchaseManager.ActionRetrieveProducsFinished -= OnRetrieveProductsFinised;
+//		
+//		
+//		if(result.isSuccess) {
+//
+////			foreach(GoogleProductTemplate tpl in AndroidInAppPurchaseManager.instance.inventory.products) 
+////			{
+////				for ( int i=0; i<GUI_Shop.GetInstance().containerShopCoins.transform.childCount ; i++ )
+////				{
+////					ShopContent content = GUI_Shop.GetInstance().containerShopCoins.transform.GetChild(i).gameObject.GetComponent<ShopContent>();
+////					if ( tpl.SKU.Equals(content.uniqueID) )
+////					{
+////						GameManager.SetNGUILabel(content.transform.Find("Label Price"),tpl.price);
+////						Transform trButtonBuy = content.transform.Find("ButtonBuy");
+////						if ( trButtonBuy )
+////							trButtonBuy.gameObject.SetActive(true);
+////						break;
+////					}
+////				}
+////			}
+//		} else {
+//			//AndroidMessage.Create("Connection Responce", result.response.ToString() + " " + result.message);
+//		}
+//		
+//		Debug.Log ("Connection Response: " + result.response.ToString() + " " + result.message);
+//		
+//	}
 }

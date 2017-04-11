@@ -9,7 +9,7 @@ public class GL1splashTimer : MonoBehaviour {
 		timer += Time.deltaTime;
 		
 		if (timer > 3) {
-			Application.LoadLevel(1);
+			Application.LoadLevel(0);
 		}
 	}
 }

@@ -44,8 +44,8 @@ public class GUI_GL1_UserData : GUI_Dialog {
 		//RefreshAllInfo ();
 
 		guiShare.OnGemuGemuLogout ();
-		if(FB.IsLoggedIn)
-			guiShare.OnFBLogout ();
+//		if(FB.IsLoggedIn)
+//			guiShare.OnFBLogout ();
 		GUI_Dialog.ReleaseTopCanvas();
 	}
 
@@ -63,8 +63,8 @@ public class GUI_GL1_UserData : GUI_Dialog {
 			}
 		}
 		string sFBID = "";
-		if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
-			sFBID = SPFacebook.instance.UserId;
+//		if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
+//			sFBID = SPFacebook.instance.UserId;
 		GL1Connector.GetInstance().RequestUserData (this.gameObject,GL1Connector.GetInstance().GetCurrUser(), GL1Connector.GetInstance().GetToken(), SystemInfo.deviceUniqueIdentifier,sFBID);
 	}
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SocialPlatforms;
-using GooglePlayGames;
+//using GooglePlayGames;
 
 public class AchievementManager : MonoBehaviour 
 {
@@ -27,10 +27,10 @@ public class AchievementManager : MonoBehaviour
 
 		if (achCount >= 0 && achCount < totalAchCount) {
 			achCount++;
-			PlayGamesPlatform.Instance.IncrementAchievement (
-				GPGSIds.achievement_claw_mania_professor, 1, (bool success) => {
-				// handle success or failure
-			});
+//			PlayGamesPlatform.Instance.IncrementAchievement (
+//				GPGSIds.achievement_claw_mania_professor, 1, (bool success) => {
+//				// handle success or failure
+//			});
 			PlayerPrefs.SetInt (PlayerPrefHandler.keyTotalAchCount, achCount);
 			PlayerPrefs.Save ();
 		} else {

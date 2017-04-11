@@ -267,7 +267,7 @@ public class GUI_Shop_New : MonoBehaviour {
 				refreshClawStatus (content);
 			} else {
 				currShopContent = content;
-				AndroidInAppPurchaseManager.instance.purchase (currShopContent.uniqueID);
+//				AndroidInAppPurchaseManager.instance.purchase (currShopContent.uniqueID);
 				#if UNITY_EDITOR
 				Debug.Log("purchased "+currShopContent.Name);
 				#endif

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SocialPlatforms;
-using GooglePlayGames;
+//using GooglePlayGames;
 
 public class GPGServices : MonoBehaviour {
 	public static GPGServices instance;
@@ -9,7 +9,7 @@ public class GPGServices : MonoBehaviour {
 	void Awake(){
 		instance = this;
 		DontDestroyOnLoad(this.gameObject);
-		PlayGamesPlatform.Activate();
+//		PlayGamesPlatform.Activate();
 	}
 
 	void Start(){
@@ -46,7 +46,7 @@ public class GPGServices : MonoBehaviour {
 	}
 	
 	public void LogOutGooglePlay(){
-		PlayGamesPlatform.Instance.SignOut();
+//		PlayGamesPlatform.Instance.SignOut();
 	}
 	#endregion
 }

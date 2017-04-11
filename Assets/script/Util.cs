@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Facebook.MiniJSON;
+//using Facebook.MiniJSON;
 
 public class Util : ScriptableObject
 {
@@ -15,16 +15,16 @@ public class Util : ScriptableObject
         return url;
     }
 
-    public static void FriendPictureCallback(FBResult result)
-    {
-        if (result.Error != null)
-        {
-            Debug.LogError(result.Error);
-            return;
-        }
-
-        //GameStateManager.FriendTexture = result.Texture;
-    }
+//    public static void FriendPictureCallback(FBResult result)
+//    {
+//        if (result.Error != null)
+//        {
+//            Debug.LogError(result.Error);
+//            return;
+//        }
+//
+//        //GameStateManager.FriendTexture = result.Texture;
+//    }
 
     public static Dictionary<string, string> RandomFriend(List<object> friends)
     {
@@ -37,39 +37,39 @@ public class Util : ScriptableObject
 
     public static Dictionary<string, string> DeserializeJSONProfile(string response)
     {
-        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
-        object nameH;
+//        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
+//        object nameH;
         var profile = new Dictionary<string, string>();
-        if (responseObject.TryGetValue("first_name", out nameH))
-        {
-            profile["first_name"] = (string)nameH;
-        }
+//        if (responseObject.TryGetValue("first_name", out nameH))
+//        {
+//            profile["first_name"] = (string)nameH;
+//        }
         return profile;
     }
     
     public static List<object> DeserializeScores(string response) 
     {
 
-        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
-        object scoresh;
+//        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
+//        object scoresh;
         var scores = new List<object>();
-        if (responseObject.TryGetValue ("data", out scoresh)) 
-        {
-            scores = (List<object>) scoresh;
-        }
+//        if (responseObject.TryGetValue ("data", out scoresh)) 
+//        {
+//            scores = (List<object>) scoresh;
+//        }
 
         return scores;
     }
 
     public static List<object> DeserializeJSONFriends(string response)
     {
-        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
-        object friendsH;
+//        var responseObject = Json.Deserialize(response) as Dictionary<string, object>;
+//        object friendsH;
         var friends = new List<object>();
-        if (responseObject.TryGetValue("friends", out friendsH))
-        {
-            friends = (List<object>)(((Dictionary<string, object>)friendsH)["data"]);
-        }
+//        if (responseObject.TryGetValue("friends", out friendsH))
+//        {
+//            friends = (List<object>)(((Dictionary<string, object>)friendsH)["data"]);
+//        }
         return friends;
     }
     

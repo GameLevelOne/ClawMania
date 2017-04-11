@@ -8,7 +8,7 @@ using System.Collections;
 using SimpleJSON;
 using UnityEngine.Advertisements;
 using GoogleMobileAds.Api;
-using GooglePlayGames;
+//using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
 
 public enum Gamestate_Mode
@@ -168,7 +168,7 @@ public class Gamestate_Gameplay : Gamestate
 		//shareBtn.gameObject.SetActive(false);
 		//inviteBtn.gameObject.SetActive(false);
 
-		AndroidNotificationManager.instance.OnNotificationIdLoaded += OnNotificationIdLoaded;
+//		AndroidNotificationManager.instance.OnNotificationIdLoaded += OnNotificationIdLoaded;
 
 		StartGame ();
 	}
@@ -359,8 +359,8 @@ public class Gamestate_Gameplay : Gamestate
 			transition.Show (Transition.TransitionMode.EaseOut);
 			
 			string sFBID = "";
-			if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
-				sFBID = SPFacebook.instance.UserId;
+//			if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
+//				sFBID = SPFacebook.instance.UserId;
 
 			//gl1Connector.RequestUserData (this.gameObject,gl1Connector.GetCurrUser(),gl1Connector.GetToken(),SystemInfo.deviceUniqueIdentifier,sFBID);
 			
@@ -687,8 +687,8 @@ public class Gamestate_Gameplay : Gamestate
 		SetClaw (sClaw);
 		
 		string sFBID = "";
-		if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
-			sFBID = SPFacebook.instance.UserId;
+//		if (SPFacebook.instance.IsInited && SPFacebook.instance.IsLoggedIn)
+//			sFBID = SPFacebook.instance.UserId;
 		//gl1Connector.RequestUserData (this.gameObject,gl1Connector.GetCurrUser(),gl1Connector.GetToken(),SystemInfo.deviceUniqueIdentifier,sFBID);
 		StartCoroutine (CheckingPrize ());
 		yield break;
@@ -750,10 +750,10 @@ public class Gamestate_Gameplay : Gamestate
 					bombFlag=PlayerPrefs.GetInt(PlayerPrefHandler.keyBomb);
 				}
 				if(bombFlag==0){
-					PlayGamesPlatform.Instance.IncrementAchievement(
-						GPGSIds.achievement_aim_for_power, 1, (bool success) => {
-						// handle success or failure
-					});
+//					PlayGamesPlatform.Instance.IncrementAchievement(
+//						GPGSIds.achievement_aim_for_power, 1, (bool success) => {
+//						// handle success or failure
+//					});
 					bombFlag=1;
 					PlayerPrefs.SetInt(PlayerPrefHandler.keyBomb,bombFlag);
 				}
@@ -773,10 +773,10 @@ public class Gamestate_Gameplay : Gamestate
 					}
 
 					if(laserFlag==0){
-						PlayGamesPlatform.Instance.IncrementAchievement(
-							GPGSIds.achievement_aim_for_power, 1, (bool success) => {
-							// handle success or failure
-						});
+//						PlayGamesPlatform.Instance.IncrementAchievement(
+//							GPGSIds.achievement_aim_for_power, 1, (bool success) => {
+//							// handle success or failure
+//						});
 						laserFlag=1;
 						PlayerPrefs.SetInt(PlayerPrefHandler.keyLaser,laserFlag);
 					}
@@ -800,10 +800,10 @@ public class Gamestate_Gameplay : Gamestate
 						charmFlag=PlayerPrefs.GetInt(PlayerPrefHandler.keyCharm);
 					}
 					if(charmFlag==0){
-						PlayGamesPlatform.Instance.IncrementAchievement(
-							GPGSIds.achievement_aim_for_power, 1, (bool success) => {
-							// handle success or failure
-						});
+//						PlayGamesPlatform.Instance.IncrementAchievement(
+//							GPGSIds.achievement_aim_for_power, 1, (bool success) => {
+//							// handle success or failure
+//						});
 						charmFlag=1;
 						PlayerPrefs.SetInt(PlayerPrefHandler.keyCharm,charmFlag);
 					}
@@ -825,10 +825,10 @@ public class Gamestate_Gameplay : Gamestate
 						wandFlag=PlayerPrefs.GetInt(PlayerPrefHandler.keyWand);
 					}
 					if(wandFlag==0){
-						PlayGamesPlatform.Instance.IncrementAchievement(
-							GPGSIds.achievement_aim_for_power, 1, (bool success) => {
-							// handle success or failure
-						});
+//						PlayGamesPlatform.Instance.IncrementAchievement(
+//							GPGSIds.achievement_aim_for_power, 1, (bool success) => {
+//							// handle success or failure
+//						});
 						wandFlag=1;
 						PlayerPrefs.SetInt(PlayerPrefHandler.keyWand,wandFlag);
 					}
@@ -856,10 +856,10 @@ public class Gamestate_Gameplay : Gamestate
 					holeFlag=PlayerPrefs.GetInt(PlayerPrefHandler.keyBlackHole);
 				}
 				if(holeFlag==0){
-					PlayGamesPlatform.Instance.IncrementAchievement(
-						GPGSIds.achievement_aim_for_power, 1, (bool success) => {
-						// handle success or failure
-					});
+//					PlayGamesPlatform.Instance.IncrementAchievement(
+//						GPGSIds.achievement_aim_for_power, 1, (bool success) => {
+//						// handle success or failure
+//					});
 					holeFlag=1;
 					PlayerPrefs.SetInt(PlayerPrefHandler.keyBlackHole,holeFlag);
 				}
@@ -881,10 +881,10 @@ public class Gamestate_Gameplay : Gamestate
 		}
 
 		if (powerUpCount < 50 ) {
-			PlayGamesPlatform.Instance.IncrementAchievement(
-				GPGSIds.achievement_the_badass, 1, (bool success) => {
-				// handle success or failure
-			});
+//			PlayGamesPlatform.Instance.IncrementAchievement(
+//				GPGSIds.achievement_the_badass, 1, (bool success) => {
+//				// handle success or failure
+//			});
 		}
 		PlayerPrefs.Save ();
 	}
@@ -1581,11 +1581,11 @@ public class Gamestate_Gameplay : Gamestate
 					}
 					
 					if(freeCoinsCount<50){
-						PlayGamesPlatform.Instance.IncrementAchievement(
-							GPGSIds.achievement_the_more_the_better, 1, (bool success) => {
-							// handle success or failure
-							//achievementManager.AddToFinalAchievementEvent();
-						});
+//						PlayGamesPlatform.Instance.IncrementAchievement(
+//							GPGSIds.achievement_the_more_the_better, 1, (bool success) => {
+//							// handle success or failure
+//							//achievementManager.AddToFinalAchievementEvent();
+//						});
 					}
 					
 					PlayerPrefs.Save();

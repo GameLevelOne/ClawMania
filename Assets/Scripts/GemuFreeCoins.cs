@@ -95,7 +95,7 @@ public class GemuFreeCoins : GUI_Dialog {
 	{
 		Debug.LogError ("Like Us");
 		//SPFacebook.instance.LoadLikes (FB.UserId, "1435959710032078");
-		SPFacebook.instance.LoadLikes (FB.UserId);
+//		SPFacebook.instance.LoadLikes (FB.UserId);
 		/*
 		bool isLike = SPFacebook.instance.IsUserLikesPage (FB.UserId, "646187692163223");
 		if (isLike) {
@@ -131,8 +131,8 @@ public class GemuFreeCoins : GUI_Dialog {
 	public void OnClickRateUs()
 	{
 
-		AndroidRateUsPopUp rate = AndroidRateUsPopUp.Create("Rate Us", rateText, rateUrl);
-		rate.OnComplete += OnRatePopUpClose;
+//		AndroidRateUsPopUp rate = AndroidRateUsPopUp.Create("Rate Us", rateText, rateUrl);
+//		rate.OnComplete += OnRatePopUpClose;
 	}
 	
 	public override void OnShow()
@@ -228,48 +228,48 @@ public class GemuFreeCoins : GUI_Dialog {
 
 	private string rateText = "If you enjoy playing with GemuGemu, please take a moment to rate it. Thanks for your support!";
 	private string rateUrl = "https://play.google.com/store/apps/details?id=com.GameLevelOne.ClawMania";
-	private void OnRatePopUpClose(AndroidDialogResult result) {
-		
-		switch(result) {
-		case AndroidDialogResult.RATED:
-			PlayerPrefs.SetInt (PlayerPrefHandler.keyRateUs, 1);
-			buttonRateUs.gameObject.SetActive(false);
-			int jmlCoinsNow = PlayerPrefs.GetInt(PlayerPrefHandler.keyCoin);
-			jmlCoinsNow += 5;
-			PlayerPrefs.SetInt(PlayerPrefHandler.keyCoin, jmlCoinsNow);
-
-			GL1Connector.GetInstance().AddBalance(this.gameObject,"0","5","","RATE");
-
-			/*int jmlTiketNow = PlayerPrefs.GetInt(PlayerPrefHandler.keyUserTiket);
-			jmlTiketNow += 100;
-			PlayerPrefs.SetInt(PlayerPrefHandler.keyUserTiket, jmlTiketNow);*/
-
-			if ( CoinTimerHandler.instance )
-				CoinTimerHandler.instance.countCoin = jmlCoinsNow;
-			
-			/*GameDataManager.instance.SendPlayResult(
-				GameDataManager.instance.gameID.ToString(),"100",
-				jmlCoinsNow.ToString(),
-				GameManager.EXP.ToString(),
-				GameManager.getLevelValue().ToString());*/
-
-			Gamestate_Gameplay gs = GameObject.FindGameObjectWithTag ("Gamestate").GetComponent<Gamestate_Gameplay>();
-			if ( gs )
-			{
-				gs.RefreshAllInfo();
-				gs.guiIngame.guiShop.RefreshInfo();
-			}
-
-			dialogBox.Show ("Info", "You got 5 GemuGold.", false, "", this.gameObject);
-
-			break;
-		case AndroidDialogResult.REMIND:
-			break;
-		case AndroidDialogResult.DECLINED:
-			break;
-			
-		}
-		
-		//AN_PoupsProxy.showMessage("Result", result.ToString() + " button pressed");
-	}
+//	private void OnRatePopUpClose(AndroidDialogResult result) {
+//		
+//		switch(result) {
+//		case AndroidDialogResult.RATED:
+//			PlayerPrefs.SetInt (PlayerPrefHandler.keyRateUs, 1);
+//			buttonRateUs.gameObject.SetActive(false);
+//			int jmlCoinsNow = PlayerPrefs.GetInt(PlayerPrefHandler.keyCoin);
+//			jmlCoinsNow += 5;
+//			PlayerPrefs.SetInt(PlayerPrefHandler.keyCoin, jmlCoinsNow);
+//
+//			GL1Connector.GetInstance().AddBalance(this.gameObject,"0","5","","RATE");
+//
+//			/*int jmlTiketNow = PlayerPrefs.GetInt(PlayerPrefHandler.keyUserTiket);
+//			jmlTiketNow += 100;
+//			PlayerPrefs.SetInt(PlayerPrefHandler.keyUserTiket, jmlTiketNow);*/
+//
+//			if ( CoinTimerHandler.instance )
+//				CoinTimerHandler.instance.countCoin = jmlCoinsNow;
+//			
+//			/*GameDataManager.instance.SendPlayResult(
+//				GameDataManager.instance.gameID.ToString(),"100",
+//				jmlCoinsNow.ToString(),
+//				GameManager.EXP.ToString(),
+//				GameManager.getLevelValue().ToString());*/
+//
+//			Gamestate_Gameplay gs = GameObject.FindGameObjectWithTag ("Gamestate").GetComponent<Gamestate_Gameplay>();
+//			if ( gs )
+//			{
+//				gs.RefreshAllInfo();
+//				gs.guiIngame.guiShop.RefreshInfo();
+//			}
+//
+//			dialogBox.Show ("Info", "You got 5 GemuGold.", false, "", this.gameObject);
+//
+//			break;
+//		case AndroidDialogResult.REMIND:
+//			break;
+//		case AndroidDialogResult.DECLINED:
+//			break;
+//			
+//		}
+//		
+//		//AN_PoupsProxy.showMessage("Result", result.ToString() + " button pressed");
+//	}
 }
